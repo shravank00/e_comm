@@ -6,11 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application',
+                            'https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css',
+                            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css',
+                            "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+  <%= render 'layouts/navigation' %>
+  <p class="notice text-success"><%= notice %></p>
+  <p class="alert text-danger"><%= alert %></p>
+
+  <%= yield %>
   </body>
 </html>

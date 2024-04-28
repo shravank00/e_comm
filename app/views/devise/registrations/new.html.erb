@@ -1,0 +1,57 @@
+<body class="bg-light-gray">
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-7 col-lg-5">
+        <div class="wrap">
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-2">Registration</h3>
+              </div>
+              <div class="w-100">
+                <p class="social-media d-flex justify-content-end">
+                </p>
+              </div>
+            </div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <div class="field mt-2">
+                <%= f.label :email, class: 'form-label' %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+                <% resource.errors.full_messages_for(:email).each do |message| %>
+                  <div class="errors text-danger"><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="field mt-2">
+                <%= f.label :password, class: 'form-label' %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+                <% resource.errors.full_messages_for(:password).each do |message| %>
+                  <div class="errors text-danger"><%= message %></div>
+                <% end %>
+              </div>
+
+              <div class="field mt-2">
+                <%= f.label :password_confirmation, class: 'form-label' %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+              </div>
+
+              <div class="actions mt-2">
+                <%= f.submit "Sign up", class: 'form-control btn btn-primary px-3' %>
+                <%= link_to 'Already have an account?', new_user_session_path %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
