@@ -1,0 +1,44 @@
+<body class="bg-light-gray">
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-7 col-lg-5">
+        <div class="wrap">
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-2">Log In</h3>
+              </div>
+              <div class="w-100">
+                <p class="social-media d-flex justify-content-end">
+                </p>
+              </div>
+            </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-group mt-3">
+                <%= f.label :email, class: 'form-control-placeholder',for: 'email-input' %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+
+              <div class="form-group my-3">
+                <%= f.label :password, class: 'form-control-placeholder', for: 'password-input' %><br />
+                <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', id: 'password-field' %>
+              </div>
+
+              <div class="form-group mb-2">
+                <%= f.submit "Log in", class: 'form-control btn rounded submit px-3 btn-primary' %>
+                <%= link_to "Don't have an account?", new_user_registration_path %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+
