@@ -1,0 +1,26 @@
+<div class="container">
+  <%= form_with model: @product do |f| %>
+    <div class="form-group">
+      <%= f.label :picture, class: 'form-label' %>
+      <%= f.file_field :picture, class: 'form-control' %>
+      <% @product.errors.full_messages_for(:picture).each do |message| %>
+        <div class="errors text-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, class: 'form-label' %>
+      <%= f.text_field :name, class: "form-control" %>
+      <% @product.errors.full_messages_for(:name).each do |message| %>
+        <div class="errors text-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, class: 'form-label' %>
+      <%= f.rich_text_area :description, class: "form-control" %>
+      <% @product.errors.full_messages_for(:description).each do |message| %>
+        <div class="errors text-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <%= f.submit "Add Product", class: "btn btn-primary mt-2" %>
+  <% end %>
+</div>
