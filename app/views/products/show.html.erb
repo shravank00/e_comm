@@ -1,0 +1,27 @@
+<div class="back-btn">
+  <%= link_to "Back", :back, class: 'btn btn-dark ms-2' %>
+</div>
+<div class="container">
+  <h2><%= @product.name.titlecase %></h2>
+  <div class="card">
+    <div class="row">
+      <!-- Product Image (Left Side) -->
+      <div class="col-md-6">
+        <%= image_tag url_for(@product.picture), class: "card-img-top", alt: "Product Image" if @product.picture.attached? %>
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <div class="card-title fw-bold">
+            <h4>Name</h4>
+            <%= @product.name || "none" %>
+          </div>
+          <div class="card-text">
+            <h4>Description</h4>
+            <%= @product.description || "none" %>
+          </div>
+          <%= link_to 'Add to Cart', '#', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

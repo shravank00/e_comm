@@ -1,0 +1,31 @@
+<div class="mb-4">
+  <h2 class="text-center">Products</h2>
+  <%= link_to "Add Product", new_product_path, class: "btn btn-primary" %>
+</div>
+<div class="row">
+  <% if @products %>
+  <% @products.each do |product| %>
+    <div class="col-md-4 mb-4">
+      <%= link_to product_path(product.id), class: 'text-decoration-none text-dark' do %>
+        <div class="card">
+          <!-- Product Image -->
+          <%= image_tag url_for(product.picture), class: "card-img-top", alt: "Product Image" if product.picture.attached? %>
+
+          <div class="card-body">
+            <!-- Product Name -->
+            <h5 class="card-title"><%= product.name %></h5>
+
+            <!-- Product Description -->
+            <p class="card-text"><%= product.description %></p>
+
+            <!-- Add to Cart Button -->
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <% else %>
+    <h2>No products available</h2>
+  <% end %>
+</div>
