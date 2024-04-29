@@ -5,7 +5,6 @@
   <h2><%= @product.name.titlecase %></h2>
   <div class="card">
     <div class="row">
-      <!-- Product Image (Left Side) -->
       <div class="col-md-6">
         <%= image_tag url_for(@product.picture), class: "card-img-top", alt: "Product Image" if @product.picture.attached? %>
       </div>
@@ -13,13 +12,14 @@
         <div class="card-body">
           <div class="card-title fw-bold">
             <h4>Name</h4>
-            <%= @product.name || "none" %>
+            <%= @product&.name %>
+            <h5 class="card-text">Price: Rs. <%= @product.price %></h5>
           </div>
           <div class="card-text">
             <h4>Description</h4>
-            <%= @product.description || "none" %>
+            <%= @product&.description %>
           </div>
-          <%= link_to 'Add to Cart', '#', class: 'btn btn-primary' %>
+          <%= button_to "Add to cart", cart_items_path(product_id: @product.id), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

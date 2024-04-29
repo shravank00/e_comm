@@ -8,18 +8,14 @@
     <div class="col-md-4 mb-4">
       <%= link_to product_path(product.id), class: 'text-decoration-none text-dark' do %>
         <div class="card">
-          <!-- Product Image -->
           <%= image_tag url_for(product.picture), class: "card-img-top", alt: "Product Image" if product.picture.attached? %>
 
           <div class="card-body">
-            <!-- Product Name -->
             <h5 class="card-title"><%= product.name %></h5>
-
-            <!-- Product Description -->
+            <h6 class="card-text">Price: Rs. <%= product.price %></h6>
             <p class="card-text"><%= product.description %></p>
 
-            <!-- Add to Cart Button -->
-            <a href="#" class="btn btn-primary">Add to Cart</a>
+            <%= button_to "Add to cart", cart_items_path(product_id: product.id), class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
