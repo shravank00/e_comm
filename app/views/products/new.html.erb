@@ -15,6 +15,13 @@
       <% end %>
     </div>
     <div class="form-group">
+      <%= f.label :price, class: 'form-label' %>
+      <%= f.number_field :price, class: "form-control" %>
+      <% @product.errors.full_messages_for(:price).each do |message| %>
+        <div class="errors text-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="form-group">
       <%= f.label :description, class: 'form-label' %>
       <%= f.rich_text_area :description, class: "form-control" %>
       <% @product.errors.full_messages_for(:description).each do |message| %>

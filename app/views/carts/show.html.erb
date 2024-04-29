@@ -1,0 +1,40 @@
+<div class="container">
+  <h2 class="text-center">Cart</h2>
+  <% if @cart.cart_items.present? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @cart.cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.product.name %></td>
+          <td>Rs. <%= cart_item.product.price %></td>
+          <td>
+            <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, class: 'btn btn-primary btn-sm' %>
+            <%= cart_item.quantity %>
+            <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, class: 'btn btn-primary btn-sm' %>
+          </td>
+          <td>Rs. <%= cart_item.total_price %></td>
+          <td>
+            <%= link_to "Remove", cart_item_path(cart_item), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <h4>Sub total: Rs. <%= @cart.sub_total %></h4>
+    <div>
+      <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+      <%= link_to "Proceed to checkout", new_order_path, class: 'btn btn-primary float-end' %><br>
+    </div>
+  <% else %>
+    <h3>Your Cart is empty.</h3>
+  <% end %>
+</div>
