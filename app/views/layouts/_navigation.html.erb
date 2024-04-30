@@ -12,6 +12,9 @@
         <li class="nav-item">
           <%= link_to "My Cart", cart_path(@current_cart), class: 'nav-link' %>
         </li>
+        <li class="nav-item">
+          <%= link_to "My Orders", orders_path, class: 'nav-link' %>
+        </li>
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Logout", destroy_user_session_path, data: {turbo: true, turbo_stream: true, turbo_method: :delete }, class: "nav-link" %>

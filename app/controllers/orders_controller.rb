@@ -1,31 +1,23 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
-  end
-
-  def show
-    @order = Order.find(params[:id])
-  end
-
-  def new
-    @order = Order.new
+    @orders = current_user.orders.order(created_at: :desc)
   end
 
   def create
     @order = Order.new(order_params)
-    @current_cart.cart_items.each do |item|
-      @order.cart_items << item
-      item.cart_id = nil
+    if @order.save
+      @current_cart.cart_items.update_all(order_id: @order.id)
+      Cart.destroy(session[:cart_id])
+      session[:cart_id] = nil
+      redirect_to root_path, notice: 'Order was successfully placed.'
+    else
+      redirect_to cart_path(@current_cart), alert: 'Order was not placed successfully.'
     end
-    @order.save
-    Cart.destroy(session[:cart_id])
-    session[:cart_id] = nil
-    redirect_to root_path
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:name, :email, :address, :pay_method)
+    params.require(:order).permit(:total_price, :status, :user_id)
   end
 end
