@@ -2,7 +2,7 @@
   <%= link_to "Back", :back, class: 'btn btn-dark ms-2' %>
 </div>
 <div class="container">
-  <h2><%= @product.name.titlecase %></h2>
+  <h2><%= @product.name&.titlecase %></h2>
   <div class="card">
     <div class="row">
       <div class="col-md-6">
@@ -10,9 +10,7 @@
       </div>
       <div class="col-md-6">
         <div class="card-body">
-          <div class="card-title fw-bold">
-            <h4>Name</h4>
-            <%= @product&.name %>
+          <div class="card-title">
             <h5 class="card-text">Price: Rs. <%= @product.price %></h5>
           </div>
           <div class="card-text">

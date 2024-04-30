@@ -4,23 +4,21 @@
 </div>
 <div class="row">
   <% if @products %>
-  <% @products.each do |product| %>
-    <div class="col-md-4 mb-4">
-      <%= link_to product_path(product.id), class: 'text-decoration-none text-dark' do %>
-        <div class="card">
-          <%= image_tag url_for(product.picture), class: "card-img-top", alt: "Product Image" if product.picture.attached? %>
-
-          <div class="card-body">
-            <h5 class="card-title"><%= product.name %></h5>
-            <h6 class="card-text">Price: Rs. <%= product.price %></h6>
-            <p class="card-text"><%= product.description %></p>
-
-            <%= button_to "Add to cart", cart_items_path(product_id: product.id), class: "btn btn-primary" %>
+    <% @products.each do |product| %>
+      <div class="col-md-4 mb-4">
+        <%= link_to product_path(product.id), class: 'text-decoration-none text-dark' do %>
+          <div class="card">
+            <%= image_tag url_for(product&.picture), class: "card-img-top", alt: "Product Image" if product.picture.attached? %>
+            <div class="card-body">
+              <h5 class="card-title"><%= product.name %></h5>
+              <h6 class="card-text">Price: Rs. <%= product.price %></h6>
+              <p class="card-text"><%= product.description %></p>
+              <%= button_to "Add to cart", cart_items_path(product_id: product.id), class: "btn btn-primary" %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+        <% end %>
+      </div>
+    <% end %>
   <% else %>
     <h2>No products available</h2>
   <% end %>
