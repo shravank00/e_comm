@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show]
+
   def index
     @products = Product.all
   end
@@ -16,11 +18,13 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-    @product = Product.find_by(id: params[:id])
-  end
+  def show;  end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :price, :description, :picture)
