@@ -6,7 +6,7 @@
   <div class="card">
     <div class="row">
       <div class="col-md-6">
-        <%= image_tag url_for(@product.picture), class: "card-img-top", alt: "Product Image" if @product.picture.attached? %>
+        <%= image_tag url_for(@product&.picture), class: "card-img-top", size: '200x200', alt: "Product Image" if @product.picture.attached? %>
       </div>
       <div class="col-md-6">
         <div class="card-body">

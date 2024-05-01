@@ -13,7 +13,7 @@ module Api
 
       def show
         @product = Product.find(params[:id])
-        render json: { product: @product, description: @product.description }
+        render json: { product: @product, description: @product.description, product_image: url_for(@product&.picture) }
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'Product not found' }, status: :not_found
       end

@@ -13,7 +13,8 @@ module Api
         @cart_item.quantity += 1 if @cart_item.persisted?
 
         if @cart_item.save
-          render json: { message: 'Product added to cart successfully', cart_items: current_cart.cart_items }, status: :created
+          render json: { message: 'Product added to cart successfully', cart_items: current_cart.cart_items,
+                         sub_total: current_cart.sub_total }, status: :created
         else
           render json: { error: @cart_item.errors.full_messages.join(', ') }, status: :unprocessable_entity
         end

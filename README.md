@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## E_commerce
 
-Things you may want to cover:
+### Description
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run `Bundle`
+* Run `db:create`
+* Run `db:migrate`
+* Create users with rake file run `rake users:create_users`
+* Create products with rake file run 
+* ` rake products:create_records`
+* Run `rails server`
