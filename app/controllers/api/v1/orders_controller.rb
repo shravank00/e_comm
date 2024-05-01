@@ -42,7 +42,8 @@ module Api
         if order.save
           cart_items.update_all(order_id: order.id)
           cart.destroy
-          render json: { order: order.cart_items, total_price: order.total_price, message: 'Order placed successfully' }, status: :created
+          render json: { order: order.cart_items, items: order.cart_items.map(&:product),
+                         total_price: order.total_price, message: 'Order placed successfully' }, status: :created
         else
           render json: { error: 'Failed to place order. Please try again.' }, status: :unprocessable_entity
         end

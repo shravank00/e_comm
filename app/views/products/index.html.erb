@@ -8,7 +8,7 @@
       <div class="col-md-4 mb-4">
         <%= link_to product_path(product.id), class: 'text-decoration-none text-dark' do %>
           <div class="card">
-            <%= image_tag url_for(product&.picture), class: "card-img-top", alt: "Product Image" if product.picture.attached? %>
+            <%= image_tag url_for(product&.picture), class: "card-img-top", size: '200x200', alt: "Product Image" if product.picture.attached? %>
             <div class="card-body">
               <h5 class="card-title"><%= product.name %></h5>
               <h6 class="card-text">Price: Rs. <%= product.price %></h6>
