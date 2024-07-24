@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
   resources :users
+  get 'new_user_mfa_sessions', to: 'user_mfa_sessions#new'
+  post 'user_mfa_sessions', to: 'user_mfa_sessions#create'
+  # resources :user_mfa_sessions, only: %i[new create]
   resources :products
   resources :carts, only: %i[show destroy]
   resources :cart_items, only: %i[create show destroy]
