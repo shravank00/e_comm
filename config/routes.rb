@@ -25,6 +25,4 @@ Rails.application.routes.draw do
       resources :orders, only: %i[index create]
     end
   end
-
-  resources :data_transfers, only: %i[new create]
 end
